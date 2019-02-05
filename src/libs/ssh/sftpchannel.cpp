@@ -1116,7 +1116,7 @@ void SftpChannelPrivate::attributesToFileInfo(const SftpFileAttributes &attribut
         else
             fileInfo.type = FileTypeOther;
         fileInfo.permissionsValid = true;
-        fileInfo.permissions = 0;
+        fileInfo.permissions = nullptr;
         fileInfo.atime = attributes.atime;
         fileInfo.mtime = attributes.mtime;
         if (attributes.permissions & 00001) // S_IXOTH

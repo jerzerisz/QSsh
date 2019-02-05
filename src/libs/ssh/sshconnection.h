@@ -85,13 +85,14 @@ public:
     SshConnectionParameters();
 
     QString host() const { return url.host(); }
-    quint16 port() const { return url.port(); }
+    int port() const { return url.port(); }
     QString userName() const { return url.userName(); }
     QString password() const { return url.password(); }
     void setHost(const QString &host) { url.setHost(host); }
     void setPort(int port) { url.setPort(port); }
     void setUserName(const QString &name) { url.setUserName(name); }
     void setPassword(const QString &password) { url.setPassword(password); }
+    QString hostKey() {return hostKeyDatabase->retrieveHostKey(this->host());}
 
     QUrl url;
     QString privateKeyFile;
@@ -125,7 +126,7 @@ class QSSH_EXPORT SshConnection : public QObject
 public:
     enum State { Unconnected, Connecting, Connected };
 
-    explicit SshConnection(const SshConnectionParameters &serverInfo, QObject *parent = 0);
+    explicit SshConnection(const SshConnectionParameters &serverInfo, QObject *parent = nullptr);
 
     void connectToHost();
     void disconnectFromHost();
