@@ -147,7 +147,7 @@ public:
     // -1 if an error occurred, number of channels closed otherwise.
     int closeAllChannels();
     int channelCount() const;
-    QString getHostPublicKey();
+    QString hostKeyFingerprint();
 
 signals:
     void connected();
